@@ -38,11 +38,16 @@ loadMeals('fish');
 const displayMeals = meals => {
     const container = document.getElementById('meals');
     container.textContent = '';
-    meals?.forEach(meal => {
+    if (!meals) {
+        console.log('ne meals');
+    }
+
+    meals?.forEach(meal => {        //optional chinning
         console.log(meal);
         const div = document.createElement('div');
         div.innerHTML = `
         <h1> ${meal.strMeal}</h1>
+        <p> ${meal.strIngredient18 ? meal.strIngredient18 : ''} </p>    
         <button onclick="loadMealDetail('${meal.strMeal}')"> click me</button>
 
         `;
